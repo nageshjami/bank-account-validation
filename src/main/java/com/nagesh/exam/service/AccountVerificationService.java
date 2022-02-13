@@ -5,6 +5,7 @@ import com.nagesh.exam.model.AccountValidationRequest;
 import com.nagesh.exam.model.AccountValidationResponse;
 import com.nagesh.exam.model.SourceRequest;
 import com.nagesh.exam.model.SourceResponse;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,15 @@ public class AccountVerificationService {
     private static final Logger LOGGER = LoggerFactory.getLogger(AccountVerificationService.class);
 
     @Value("${source1.service.url}")
+    @Setter
     private String source1URL;
 
     @Value("${source2.service.url}")
+    @Setter
     private String source2URL;
 
     @Autowired
-    SourceService service;
+    private SourceService service;
 
 
     public AccountValidationResponse validateAccount(AccountValidationRequest validationRequest) throws ExecutionException, InterruptedException {
@@ -54,7 +57,6 @@ public class AccountVerificationService {
       for(Map.Entry<String,String> entry : serviceURLs.entrySet()){
           SourceRequest sourceRequest = new SourceRequest(accountNumber);
           completableFutures.add(service.processSourceRequest(sourceRequest,entry.getValue(), entry.getKey()));
-
       }
       return  constructResponse(completableFutures);
     }

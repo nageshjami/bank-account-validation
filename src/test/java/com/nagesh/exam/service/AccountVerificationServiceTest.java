@@ -12,7 +12,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
@@ -41,6 +40,7 @@ public class AccountVerificationServiceTest {
 
     @BeforeEach
     public void setUp(){
+//        accountVerificationService.setSource1URL();
         ReflectionTestUtils.setField(accountVerificationService,"source1URL","https://source1.com/v1/api/account/validate");
         ReflectionTestUtils.setField(accountVerificationService,"source2URL","https://source2.com/v2/api/account/validate");
         ReflectionTestUtils.setField(accountVerificationService,"service",service);
