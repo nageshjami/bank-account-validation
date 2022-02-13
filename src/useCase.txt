@@ -1,0 +1,13 @@
+1. First Account number validation - Mandatory
+2. Sources is not mandatory
+------------------
+
+2. Sources has data like source1 or source2
+   i. Need to get the configured URL from properties file for given source
+   ii. invoke service to validate account
+
+
+--------------------
+3. Sources has
+   we need to in
+3.
